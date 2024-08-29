@@ -10,7 +10,9 @@ type Props = {
     isMonthly: boolean
 }
 
-const CheckBox: FC<Props> =  ({control, name, addon, isMonthly = false}) => (
+const CheckBox: FC<Props> =  ({control, name, addon, isMonthly = false}) => {
+  const parsedName = addon.name.replaceAll(" ", "-").toLowerCase()
+  return (
     <Controller
         control={control}
         name={name}
@@ -21,13 +23,13 @@ const CheckBox: FC<Props> =  ({control, name, addon, isMonthly = false}) => (
                     description: addon.description,
                     price: isMonthly ? addon.pricing.monthly : addon.pricing.yearly
                 }}
-                checked={field.value.includes(addon.name.replaceAll(" ", "-").toLowerCase())}
+                checked={field.value.includes(parsedName)}
                 onChange={(e) => {
                   const newValue = [...field.value];
                   if (e.target.checked) {
-                    newValue.push(addon.name.replaceAll(" ", "-").toLowerCase());
+                    newValue.push(parsedName);
                   } else {
-                    newValue.splice(newValue.indexOf(addon.name.replaceAll(" ", "-").toLowerCase()), 1);
+                    newValue.splice(newValue.indexOf(parsedName), 1);
                   }
                   field.onChange(newValue);
                 }}
@@ -37,5 +39,6 @@ const CheckBox: FC<Props> =  ({control, name, addon, isMonthly = false}) => (
         )}
     />
 )
+}
 
 export default CheckBox
