@@ -1,18 +1,18 @@
 @font-face {
   font-family: 'Ubuntu', sans-serif;
-  src: url('/assets/fonts/Ubuntu-Regular.ttf') format('truetype');
+  src: url('/public/assets/fonts/Ubuntu-Regular.ttf') format('truetype');
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'Ubuntu', sans-serif;
-  src: url('/assets/fonts/Ubuntu-Medium.ttf') format('truetype');
+  src: url('/public/assets/fonts/Ubuntu-Medium.ttf') format('truetype');
   font-weight: 500;
 }
 
 @font-face {
   font-family: 'Ubuntu', sans-serif;
-  src: url('/assets/fonts/Ubuntu-Bold.ttf') format('truetype');
+  src: url('/public/assets/fonts/Ubuntu-Bold.ttf') format('truetype');
   font-weight: 700;
 }
 
@@ -59,14 +59,35 @@ img {
   height: auto;
 }
 
-form {
+.form--wrapper {
   background-color: var(--white);
   max-width: calc(100% - 2rem);
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+.form--wrapper h2 {
+  font-weight: 700;
+  color: var(--marine-blue);
+  font-size: 24px;
+  margin-block-end: 0.5rem;
+}
+
+.form--wrapper > p {
+  color: var(--cool-gray);
+  font-size: 16px;
+  max-width: 30ch;
+}
+
+.form--wrapper--inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .form-group--heading {
@@ -87,7 +108,6 @@ form {
   border-radius: 5px;
   border: 1px solid var(--light-gray);
   font-size: 14px;
-
 }
 
 .form-group input:focus {
@@ -263,4 +283,38 @@ input.form-group--error {
   font-weight: 700;
   margin-block-start: 0.25rem;
   margin-block-end: 0.25rem;
+}
+
+.form--actions {
+  position: absolute;
+  bottom: 0;
+  background-color: var(--white);
+  width: 100%;
+  padding: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+.form--actions button {
+  all: unset;
+  font-family: 'Ubuntu', sans-serif;
+  cursor: pointer;
+  border-radius: 5px;
+  color: var(--cool-gray);
+  font-weight: 500;
+  background-color: transparent;
+}
+
+.form--actions button[type="submit"] {
+  all: unset;
+  font-family: 'Ubuntu', sans-serif;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 5px;
+  color: var(--white);
+  margin-inline-start: auto;
+  background-color: var(--marine-blue);
 }

@@ -4,9 +4,13 @@ import Switch from "./components/Switch";
 import { useToggle } from "./hooks/useToggle";
 import RadioInput from "./components/RadioInput";
 import CheckBox from "./components/CheckBox";
+import Input from "./components/Input";
+import FormStepContainer from "./components/FormStepContainer";
 
 export type FormValue = {
   name: string;
+  email: string;
+  phone: string;
   plan: string;
   monthlyPayment: boolean;
   addon: string[]
@@ -82,10 +86,6 @@ const App = () => {
       addon: []
     }
   })
-  const {
-    isActive: isMonthly,
-    toggleActive: toggleMonthly
-  } = useToggle()
 
   const onSubmit = (data: FormValue) => {
     console.log(data)
@@ -93,47 +93,28 @@ const App = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+    <FormStepContainer
+      title="Personal info"
+      description="Please provide your name, email address and phone number"
+      >
+      <Input control={control} label="Name" name="name" placeholder="e.g. Stephen King" />
+      <Input control={control} label="Email Address" name="email" placeholder="e.g. stephenking@lorem.com" />
+      <Input control={control} label="Phone Number" name="phone" placeholder="e.g. +1 234 567 890" />
       <Controller
         control={control}
-        name="name"
-        rules={{ required: "This field is required" }}
-        render={({field, formState: {errors}}) => (
-          <TextInput
-            label="Name"
-            placeholder={"e.g. Stephen King"}
-            error={errors.name?.message}
-            {...field}
-          />
+        name="monthlyPayment"
+        render={({ field }) => (
+          <Switch
+            checked={field.value}
+            onChange={(e) => {
+              field.onChange(e.target.checked)
+            }}
+            name={field.name}
+            activeText="Monthly"
+            inactiveText="Yearly" />
         )}
       />
-      {
-        plans.map((plan) => (
-          <RadioInput
-            key={plan.name}
-            control={control}
-            name="plan"
-            plan={plan}
-            isMonthly={isMonthly}
-          />
-        ))
-      }
-      { errors.plan && <p className="form-group--error">{errors.plan.message}</p> }
-      <Switch
-        checked={isMonthly}
-        onChange={toggleMonthly}
-        activeText="Monthly"
-        inactiveText="Yearly" />
-      {
-        addons.map((addon) => (
-          <CheckBox
-            key={addon.name}
-            control={control}
-            name="addon"
-            addon={addon}
-            isMonthly={isMonthly}
-          />
-        ))
-      }
+    </FormStepContainer>
       <button type="submit">Submit</button>
     </form>
   );
