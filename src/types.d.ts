@@ -6,8 +6,8 @@ type Plan = {
 }
 
 type Pricing = {
-    monthly: string;
-    yearly:  string;
+    monthly: number;
+    yearly:  number;
 }
 
 type Addon = {

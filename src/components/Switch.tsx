@@ -1,25 +1,22 @@
-import { FC, useCallback } from "react";
+import { FC } from "react";
 
 type Props = {
     checked: boolean;
-    onChange: () => void;
+    onChange: (e: any) => void;
     activeText: string;
     inactiveText: string;
+    name: 'monthlyPayment';
 }
 
-const Switch: FC<Props> = ({checked, onChange, activeText, inactiveText}) => {
-    const handleOnChange = useCallback(() => {
-        onChange();
-    }, [onChange]);
-
+const Switch: FC<Props> = ({checked, onChange, activeText, inactiveText, name}) => {
     return (
         <div className="switch--wrapper">
             <input
                 type="checkbox"
-                name="monthly-payment"
+                name={name}
                 id="switch"
                 checked={checked}
-                onChange={handleOnChange}
+                onChange={onChange}
             />
             <label htmlFor="switch">
                 <p className={checked ? "switch--active" : ""}>{activeText}</p>

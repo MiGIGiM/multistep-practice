@@ -19,7 +19,7 @@ const RadioInput: FC<Props> =  ({control, name, plan, isMonthly = false}) => (
             <PlanRadioInput
                 planData={{
                     name: plan.name,
-                    price: isMonthly ? plan.pricing.monthly : plan.pricing.yearly,
+                    price: isMonthly ? `$${plan.pricing.monthly}/mo` : `$${plan.pricing.yearly}/year`,
                     icon: plan.icon,
                     offer: isMonthly ? undefined : plan.offer
                 }}

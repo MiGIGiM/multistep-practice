@@ -59,14 +59,35 @@ img {
   height: auto;
 }
 
-form {
+.form--wrapper {
   background-color: var(--white);
   max-width: calc(100% - 2rem);
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+.form--wrapper h2 {
+  font-weight: 700;
+  color: var(--marine-blue);
+  font-size: 24px;
+  margin-block-end: 0.5rem;
+}
+
+.form--wrapper > p {
+  color: var(--cool-gray);
+  font-size: 16px;
+  max-width: 30ch;
+}
+
+.form--wrapper--inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .form-group--heading {
@@ -87,7 +108,6 @@ form {
   border-radius: 5px;
   border: 1px solid var(--light-gray);
   font-size: 14px;
-
 }
 
 .form-group input:focus {
@@ -259,6 +279,166 @@ input.form-group--error {
 
 .form-group--checkbox .form-group--title {
   color: var(--marine-blue);
+  font-size: 16px;
+  font-weight: 700;
+  margin-block-start: 0.25rem;
+  margin-block-end: 0.25rem;
+}
+
+.form--actions {
+  position: fixed;
+  bottom: 0;
+  background-color: var(--white);
+  width: 100%;
+  padding: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+.form--actions button {
+  all: unset;
+  font-family: 'Ubuntu', sans-serif;
+  cursor: pointer;
+  border-radius: 5px;
+  color: var(--cool-gray);
+  font-weight: 500;
+  background-color: transparent;
+}
+
+.form--actions button[type="submit"] {
+  all: unset;
+  font-family: 'Ubuntu', sans-serif;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 5px;
+  color: var(--white);
+  margin-inline-start: auto;
+  background-color: var(--marine-blue);
+}
+
+.form--step-container {
+  background-image: url('/public/assets/images/bg-sidebar-mobile.svg');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: 100%;
+  height: 173px;
+  margin-block-end: -75px;
+}
+
+.form--steps {
+  width: fit-content;
+  padding-block-start: 40px;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+}
+
+.form--step {
+  all: unset;
+  font-family: 'Ubuntu', sans-serif;
+  cursor: pointer;
+  background-color: transparent;
+  outline: 1px solid var(--light-gray);
+  border-radius: 100vw;
+  padding: 5px 10px;
+  color: var(--light-gray);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.form--step.active {
+  background-color: var(--light-blue);
+  border: none;
+  color: var(--marine-blue);
+}
+
+.form-group--summary {
+  background-color: var(--magnolia);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.form-group--summary--plan,
+.form-group--summary--addon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-group--summary--plan.addons-selected {
+  padding-block-end: 0.5rem;
+  border-block-end:1px solid var(--light-gray);
+  margin-block-end: 10px;
+}
+
+.form-group--summary--addon:not(:last-child) {
+  margin-block-end: 0.5rem;
+}
+
+.form-group--summary--plan button {
+  all: unset;
+  cursor: pointer;
+  color: var(--cool-gray);
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.form-group--summary--plan button:hover{
+  color: var(--purplish-blue);
+}
+
+.form-group--title {
+  color: var(--marine-blue);
+  font-size: 16px;
+  font-weight: 700;
+  margin-block-start: 0.25rem;
+  margin-block-end: 0.25rem;
+}
+
+.form-group--price {
+  color: var(--marine-blue);
+  font-size: 14px;
+  font-weight: 700;
+  margin-block-start: 0.25rem;
+  margin-block-end: 0.25rem;
+}
+
+.form-group--summary--addon .form-group--title {
+  color: var(--cool-gray);
+  font-size: 14px;
+  font-weight: 500;
+  margin-block-start: 0.25rem;
+  margin-block-end: 0.25rem;
+}
+
+.form-group--summary--addon .form-group--price {
+  font-weight: 500;
+}
+
+.form-group--total{
+  padding-inline: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+.form-group--total .form-group--title {
+  color: var(--cool-gray);
+  font-size: 14px;
+  font-weight: 500;
+  margin-block-start: 0.25rem;
+  margin-block-end: 0.25rem; 
+}
+
+.form-group--total .form-group--price {
+  color: var(--purplish-blue);
   font-size: 16px;
   font-weight: 700;
   margin-block-start: 0.25rem;

@@ -11,7 +11,7 @@ type Props = {
 }
 
 const CheckBox: FC<Props> =  ({control, name, addon, isMonthly = false}) => {
-  const parsedName = addon.name.replaceAll(" ", "-").toLowerCase()
+  const parsedName = addon.name.toLowerCase()
   return (
     <Controller
         control={control}
@@ -21,7 +21,7 @@ const CheckBox: FC<Props> =  ({control, name, addon, isMonthly = false}) => {
                 addonData={{
                     name: addon.name,
                     description: addon.description,
-                    price: isMonthly ? addon.pricing.monthly : addon.pricing.yearly
+                    price: isMonthly ? `$${addon.pricing.monthly}/mo` : `$${addon.pricing.yearly}/year`
                 }}
                 checked={field.value.includes(parsedName)}
                 onChange={(e) => {
